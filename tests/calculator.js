@@ -1,21 +1,39 @@
-describe('Calculator test', function()
-{
-    it ('addition of numbers', function()
-        {
-            browser.get('http://juliemr.github.io/protractor-demo/');
+let homepage = require('../pages/homepage');
 
-            element(by.model('first')).sendKeys('2');
-            element(by.model('second')).sendKeys('2');
+describe('demo calculator tests', function () {
 
-            //element(by.css('[ng-click="doAddition()"]')).click();
-            element(by.xpath("//button[@ng-click='doAddition()']")).click();
-            browser.sleep(3000)
-            let result = element(by.cssContainingText('.ng-binding','4'))
-            
-            expect(result.getText()).toEqual('4');
-            
+    it('addition test', function () {
 
-            browser.sleep(3000)
-        }
-    )
-})
+        homepage.get('http://juliemr.github.io/protractor-demo/');
+
+        homepage.enterFirstNumber('4');
+
+        homepage.enterSecondNumber('3');
+
+        homepage.clickGo();
+
+        homepage.verifyResult('7');
+
+        browser.sleep(2000)
+
+    });
+
+    it('subtraction test', function () {
+
+        homepage.get('http://juliemr.github.io/protractor-demo/');
+
+        homepage.enterFirstNumber('4');
+
+        homepage.enterSecondNumber('3');
+
+        homepage.clickGo1();
+
+        homepage.verifyResult('7');
+
+        browser.sleep(2000)
+
+    });
+
+   
+
+});
